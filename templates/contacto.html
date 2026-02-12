@@ -1,6 +1,16 @@
-<form method="POST">
-    <input type="text" name="nombre" placeholder="Nombre">
-    <input type="email" name="correo" placeholder="Correo">
-    <textarea name="mensaje" placeholder="Mensaje"></textarea>
-    <button type="submit">Enviar</button>
-</form>
+{% extends "base.html" %}
+{% block title %}Contacto{% endblock %}
+
+{% block content %}
+<section class="section">
+    <h2>Contáctanos</h2>
+
+    <form method="POST">
+        <input type="text" name="nombre" placeholder="Nombre" required><br>
+        <input type="email" name="correo" placeholder="Correo" required><br>
+        <textarea name="mensaje" placeholder="Mensaje" required></textarea><br>
+        <button type="submit">Enviar</button>
+    </form>
+
+</section>
+{% endblock %}
