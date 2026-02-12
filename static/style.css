@@ -12,7 +12,7 @@ body {
 
 /* HEADER */
 header {
-    background-color: rgba(37, 99, 235, 0.8); /* Semi-transparente para ver fondo */
+    background-color: rgba(37, 99, 235, 0.6); /* Semi-transparente azul */
     color: white;
     padding: 15px 40px;
     display: flex;
@@ -36,7 +36,7 @@ nav a:hover {
 .hero {
     text-align: center;
     padding: 80px 20px;
-    background: linear-gradient(to right, #3b82f6, #60a5fa);
+    background: rgba(59, 130, 246, 0.6); /* Semi-transparente azul, para que se vea la imagen */
     color: white;
 }
 
@@ -60,7 +60,7 @@ nav a:hover {
 
 /* TARJETAS */
 .card {
-    background: white;
+    background: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente para que la imagen se vea detrás */
     width: 280px;
     margin: 20px;
     padding: 20px;
@@ -71,7 +71,7 @@ nav a:hover {
 
 /* FOOTER */
 footer {
-    background-color: rgba(30, 58, 138, 0.8); /* Semi-transparente */
+    background-color: rgba(30, 58, 138, 0.6); /* Semi-transparente azul */
     color: white;
     text-align: center;
     padding: 15px;
@@ -94,9 +94,9 @@ form button {
 
 /* CONTENEDOR GENERAL */
 .container {
-    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+    background-color: rgba(255, 255, 255, 0.85); /* Semi-transparente para que se vea un poco la imagen */
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
     border-radius: 10px;
-}
+} 
