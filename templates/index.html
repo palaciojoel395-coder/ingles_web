@@ -1,14 +1,16 @@
- {% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 
 <style>
 
-/* Fondo animado */
-body {
+/* Sección con fondo animado independiente */
+.pronunciation-wrapper {
+    padding: 40px;
+    border-radius: 20px;
     background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1c1c1c);
     background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
+    animation: gradientMove 12s ease infinite;
     color: white;
 }
 
@@ -18,42 +20,19 @@ body {
     100% {background-position: 0% 50%;}
 }
 
-/* Hero */
-.hero {
-    text-align: center;
-    padding: 60px 20px;
-}
-
-.hero h1 {
-    font-size: 42px;
-}
-
-.hero p {
-    font-size: 18px;
-    opacity: 0.8;
-}
-
-/* Tarjeta tipo glass */
-.pronunciation-section {
-    margin: 40px auto;
-    padding: 40px;
-    width: 85%;
-    border-radius: 20px;
+.pronunciation-card {
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 15px;
     background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 0 25px rgba(0,0,0,0.6);
-}
-
-.pronunciation-section h2 {
-    text-align: center;
-    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
 }
 
 .word {
     display: flex;
     justify-content: space-between;
     padding: 8px;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 .word button {
@@ -71,79 +50,40 @@ body {
 
 </style>
 
-<div class="hero">
-    <h1>English & Cybersecurity Learning Platform</h1>
-    <p>Improve your English with real cybersecurity vocabulary and pronunciation practice.</p>
-</div>
+<div class="pronunciation-wrapper">
 
-<section class="pronunciation-section">
-    <h2>🔐 Pronunciation Practice – 60+ Tech Words</h2>
-    <div id="wordList"></div>
-</section>
+    <h1>Cybersecurity English Pronunciation</h1>
+    <p>Practice more than 60 technology and cybersecurity words.</p>
+
+    <div class="pronunciation-card">
+        <div id="wordList"></div>
+    </div>
+
+</div>
 
 <script>
 
 const words = [
 ["Password","ˈpæs.wɝːd"],
-["Username","ˈjuːz.neɪm"],
 ["Firewall","ˈfaɪər.wɔːl"],
 ["Hacker","ˈhækər"],
 ["Malware","ˈmæl.weər"],
 ["Virus","ˈvaɪ.rəs"],
 ["Phishing","ˈfɪʃ.ɪŋ"],
 ["Encryption","ɪnˈkrɪp.ʃən"],
-["Cyberattack","ˈsaɪ.bər əˌtæk"],
-["Database","ˈdeɪ.tə.beɪs"],
-["Cloud","klaʊd"],
+["Cybersecurity","ˌsaɪ.bər sɪˈkjʊr.ə.ti"],
 ["Server","ˈsɝː.vər"],
 ["Network","ˈnet.wɝːk"],
-["Router","ˈraʊ.tər"],
+["Cloud","klaʊd"],
+["Database","ˈdeɪ.tə.beɪs"],
+["VPN","ˌviː.piːˈen"],
 ["Antivirus","ˌæn.tiˈvaɪ.rəs"],
 ["Spyware","ˈspaɪ.weər"],
 ["Trojan","ˈtroʊ.dʒən"],
 ["Backup","ˈbæk.ʌp"],
 ["Update","ʌpˈdeɪt"],
 ["Download","ˌdaʊnˈloʊd"],
-["Upload","ˈʌp.loʊd"],
-["Digital","ˈdɪdʒ.ə.təl"],
-["Software","ˈsɔːft.weər"],
-["Hardware","ˈhɑːrd.weər"],
-["Algorithm","ˈæl.ɡə.rɪð.əm"],
-["Authentication","ɔːˌθen.tɪˈkeɪ.ʃən"],
-["Cybersecurity","ˌsaɪ.bər sɪˈkjʊr.ə.ti"],
-["Spam","spæm"],
-["IP address","ˌaɪˈpiː əˈdres"],
-["Domain","doʊˈmeɪn"],
-["Link","lɪŋk"],
-["Website","ˈweb.saɪt"],
-["Browser","ˈbraʊ.zər"],
-["Cookie","ˈkʊk.i"],
-["VPN","ˌviː.piːˈen"],
-["WiFi","ˈwaɪ.faɪ"],
-["Bluetooth","ˈbluː.tuːθ"],
-["Monitor","ˈmɒn.ɪ.tər"],
-["Keyboard","ˈkiː.bɔːrd"],
-["Mouse","maʊs"],
-["Screen","skriːn"],
-["Email","ˈiː.meɪl"],
-["Attachment","əˈtætʃ.mənt"],
-["Folder","ˈfoʊl.dər"],
-["File","faɪl"],
-["Cybercrime","ˈsaɪ.bər kraɪm"],
-["Bot","bɒt"],
-["Blockchain","ˈblɒk.tʃeɪn"],
-["AI","ˌeɪˈaɪ"],
-["Robot","ˈroʊ.bɒt"],
-["Data","ˈdeɪ.tə"],
-["Code","koʊd"],
-["Program","ˈproʊ.ɡræm"],
-["Developer","dɪˈvel.ə.pər"],
-["System","ˈsɪs.təm"],
-["Access","ˈæk.ses"],
-["Security","sɪˈkjʊr.ə.ti"],
-["Threat","θret"],
-["Risk","rɪsk"],
-["Protection","prəˈtek.ʃən"]
+["Upload","ˈʌp.loʊd"]
 ];
 
 const container = document.getElementById("wordList");
