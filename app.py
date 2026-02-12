@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -8,40 +8,31 @@ def home():
 
 @app.route("/metodo")
 def metodo():
-    return render_template("metodo.html")
+    return "<h1>Método</h1>"
 
 @app.route("/programas")
 def programas():
-    return render_template("programas.html")
+    return "<h1>Programas</h1>"
 
 @app.route("/recursos")
 def recursos():
-    return render_template("recursos.html")
+    return "<h1>Recursos</h1>"
 
 @app.route("/blog")
 def blog():
-    return render_template("blog.html")
+    return "<h1>Blog</h1>"
 
 @app.route("/testimonios")
 def testimonios():
-    return render_template("testimonios.html")
+    return "<h1>Testimonios</h1>"
 
 @app.route("/equipo")
 def equipo():
-    return render_template("equipo.html")
+    return "<h1>Equipo</h1>"
 
-@app.route("/contacto", methods=["GET", "POST"])
+@app.route("/contacto")
 def contacto():
-    if request.method == "POST":
-        nombre = request.form["nombre"]
-        correo = request.form["correo"]
-        mensaje = request.form["mensaje"]
-        print(nombre, correo, mensaje)
-    return render_template("contacto.html")
-
-@app.route("/pronunciacion")
-def pronunciacion():
-    return render_template("pronunciacion.html")
+    return "<h1>Contacto</h1>"
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000 ) 
+    app.run(host="0.0.0.0", port=5000)
