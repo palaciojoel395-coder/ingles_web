@@ -39,5 +39,9 @@ def contacto():
         print(nombre, correo, mensaje)
     return render_template("contacto.html")
 
+@app.route("/pronunciacion")
+def pronunciacion(): 
+    return render_template("pronunciacio.html")
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000 )
