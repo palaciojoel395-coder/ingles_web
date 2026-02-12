@@ -77,3 +77,12 @@ form button {
     border: none;
     border-radius: 5px;
 }
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("/static/imagenes/fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
