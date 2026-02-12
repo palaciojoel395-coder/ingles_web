@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Aprende Inglés</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-    <h1>Aprende Inglés con Yoel 🚀</h1>
-    <p>Bienvenido a tu plataforma de inglés.</p>
+{% block title %}Inicio{% endblock %}
 
-    <a href="/lessons">Ver Lecciones</a>
-    <a href="/login">Iniciar Sesión</a>
+{% block content %}
 
-</body>
-</html>
+<section class="hero">
+    <h2>Aprende Inglés Jugando</h2>
+    <p>Clases dinámicas para niños de 3 a 12 años.</p>
+    <button class="btn">Prueba Gratis</button>
+</section>
+
+{% endblock %}
