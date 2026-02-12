@@ -3,16 +3,16 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url("imagenes/fondo.jpg"); /* Ruta relativa desde /static */
+    background-image: url("imagenes/image.jpg");  
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
-/* HEADER */
+
 header {
-    background-color: rgba(37, 99, 235, 0.6); /* Semi-transparente azul */
+    background-color: rgba(37, 99, 235, 0.6);  
     color: white;
     padding: 15px 40px;
     display: flex;
