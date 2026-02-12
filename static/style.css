@@ -1,11 +1,18 @@
+/* BODY: fondo de página */
 body {
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
+    background-image: url("imagenes/fondo.jpg"); /* Ruta relativa desde /static */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
+/* HEADER */
 header {
-    background-color: #2563eb;
+    background-color: rgba(37, 99, 235, 0.8); /* Semi-transparente para ver fondo */
     color: white;
     padding: 15px 40px;
     display: flex;
@@ -13,6 +20,7 @@ header {
     align-items: center;
 }
 
+/* NAV */
 nav a {
     color: white;
     margin-left: 15px;
@@ -24,6 +32,7 @@ nav a:hover {
     text-decoration: underline;
 }
 
+/* HERO / Sección principal */
 .hero {
     text-align: center;
     padding: 80px 20px;
@@ -31,6 +40,7 @@ nav a:hover {
     color: white;
 }
 
+/* BOTONES */
 .btn {
     display: inline-block;
     padding: 12px 25px;
@@ -42,11 +52,13 @@ nav a:hover {
     margin-top: 20px;
 }
 
+/* SECCIONES */
 .section {
     padding: 60px 20px;
     text-align: center;
 }
 
+/* TARJETAS */
 .card {
     background: white;
     width: 280px;
@@ -57,13 +69,15 @@ nav a:hover {
     display: inline-block;
 }
 
+/* FOOTER */
 footer {
-    background-color: #1e3a8a;
+    background-color: rgba(30, 58, 138, 0.8); /* Semi-transparente */
     color: white;
     text-align: center;
     padding: 15px;
 }
 
+/* FORMULARIOS */
 form input, form textarea {
     width: 80%;
     padding: 10px;
@@ -77,12 +91,12 @@ form button {
     border: none;
     border-radius: 5px;
 }
-body {
-    margin: 0;
-    padding: 0;
-    background-image: url("/static/imagenes/fondo.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+
+/* CONTENEDOR GENERAL */
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
 }
