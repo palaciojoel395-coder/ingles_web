@@ -40,8 +40,8 @@ def contacto():
     return render_template("contacto.html")
 
 @app.route("/pronunciacion")
-def pronunciacion(): 
-    return render_template("pronunciacio.html")
+def pronunciacion():
+    return render_template("pronunciacion.html")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000 ) 
