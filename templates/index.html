@@ -2,26 +2,27 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Aprende Inglés Fácil</title>
+    <title>Aprende Inglés</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
     <header>
-        <h1>📘 Aprende Inglés Fácil</h1>
+        <h1>Aprende Inglés Fácil</h1>
     </header>
 
     <section>
         <h2>Bienvenido</h2>
-        <p>Esta página te ayudará a mejorar tu inglés paso a paso.</p>
+        <p>Mejora tu pronunciación y vocabulario en inglés.</p>
     </section>
 
+    <!-- BOTÓN NUEVO -->
     <section>
         <h2>Pronunciación</h2>
-        <p>Aprende cómo se pronuncian las letras en inglés.</p>
+        <p>Haz clic para aprender la pronunciación correcta de las letras.</p>
 
         <a href="{{ url_for('pronunciacion') }}">
-            <button>Ir a Pronunciación</button>
+            <button>Ir a Pronunciación 🔊</button>
         </a>
     </section>
 
