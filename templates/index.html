@@ -1,27 +1,38 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inglés</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-{% block content %}
-<header>
-    <h1>Aprende Inglés Fácil</h1>
-</header>
+<body class="fondo">
 
-<section>
-    <h2>Bienvenido</h2>
-    <p>Mejora tu pronunciación y vocabulario en inglés.</p>
-</section>
 
-<section>
-    <h2>Pronunciación</h2>
-    <p>Haz clic para aprender la pronunciación correcta de las letras.</p>
+    <header>
+        <h1>Bienvenido a la página de Inglés</h1>
+    </header>
 
-    <a href="{{ url_for('interaccion') }}">
-        <button style="background-color:#2196f3;">
-            🎮 Interacción y Aprendizaje
-        </button>
-    </a>
-</section>
+    <main>
+        <section>
+            <h2>Sección de Pronunciación</h2>
+            <a href="{{ url_for('pronunciacion') }}">
+                <button>Ir a Pronunciación</button>
+            </a>
+        </section>
 
-<footer>
-    <p>© 2026 Yoel Palacio Juarez</p>
-</footer>
-{% endblock %}
+        <section>
+            <h2>Sección de Interacción y Aprendizaje</h2>
+            <a href="{{ url_for('interaccion') }}">
+                <button>Ir a Interacción</button>
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Inglés Web</p>
+    </footer>
+
+</body>
+</html>
