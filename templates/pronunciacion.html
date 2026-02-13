@@ -6,76 +6,57 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 <style>
-
-/* Diseño tipo app */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+.section-title{
+    margin-top:40px;
+    font-size:22px;
 }
 
-.app-container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
+.word-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,0.1);
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.2s;
 }
 
-.search-box {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    margin-bottom: 20px;
-    font-size: 16px;
+.word-card:hover{
+    background:rgba(255,255,255,0.2);
+    transform:scale(1.02);
 }
 
-.word-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255,255,255,0.1);
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.2s;
+.word-card.active{
+    background:#ff9800;
 }
 
-.word-card:hover {
-    background: rgba(255,255,255,0.2);
-    transform: scale(1.02);
+.word-text{
+    text-align:left;
 }
 
-.word-card.active {
-    background: #ff9800;
+.pronunciation{
+    font-size:14px;
+    opacity:0.8;
 }
 
-.word-text {
-    text-align: left;
+.audio-icon{
+    font-size:20px;
 }
-
-.audio-icon {
-    font-size: 20px;
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>🔐 Cyber English</h1>
-    <a href="{{ url_for('index') }}">
-        <button>⬅ Volver</button>
-    </a>
+<h1>🔐 Cyber English</h1>
+<a href="{{ url_for('index') }}">
+<button>⬅ Volver</button>
+</a>
 </header>
 
-<div class="app-container">
-
-<input type="text" class="search-box" placeholder="Buscar palabra..." onkeyup="filterWords()">
-
-<div id="wordList"></div>
-
-</div>
+<div style="max-width:900px;margin:auto;padding:20px;" id="content"></div>
 
 <footer>
 <p>© 2026 Yoel Palacio Juarez</p>
@@ -83,119 +64,130 @@ body {
 
 <script>
 
-const words = [
-["Computer","Computadora"],
-["Internet","Internet"],
-["Software","Software"],
-["Hardware","Hardware"],
-["Server","Servidor"],
-["Network","Red"],
-["Database","Base de datos"],
-["Cloud","Nube"],
-["System","Sistema"],
-["Application","Aplicación"],
-["Programming","Programación"],
-["Developer","Desarrollador"],
-["Code","Código"],
-["Algorithm","Algoritmo"],
-["Data","Datos"],
-["Digital","Digital"],
-["Platform","Plataforma"],
-["Device","Dispositivo"],
-["Router","Router"],
-["Firewall","Cortafuegos"],
-["Cybersecurity","Ciberseguridad"],
-["Hacker","Hacker"],
-["Malware","Malware"],
-["Virus","Virus"],
-["Phishing","Phishing"],
-["Ransomware","Ransomware"],
-["Encryption","Encriptación"],
-["Password","Contraseña"],
-["Authentication","Autenticación"],
-["Authorization","Autorización"],
-["Threat","Amenaza"],
-["Attack","Ataque"],
-["Data Breach","Fuga de datos"],
-["Spyware","Software espía"],
-["Trojan","Troyano"],
-["Security","Seguridad"],
-["Access","Acceso"],
-["Backup","Copia de seguridad"],
-["Identity","Identidad"],
-["Biometrics","Biometría"],
-["Vulnerability","Vulnerabilidad"],
-["Exploit","Exploit"],
-["Patch","Parche"],
-["Update","Actualización"],
-["Cybercrime","Ciberdelito"],
-["Dark Web","Web oscura"],
-["IP Address","Dirección IP"],
-["Domain","Dominio"],
-["Hosting","Hosting"],
-["Protocol","Protocolo"],
-["HTTP","HTTP"],
-["HTTPS","HTTPS"],
-["VPN","VPN"],
-["Bandwidth","Ancho de banda"],
-["Upload","Subir"],
-["Download","Descargar"],
-["Administrator","Administrador"],
-["Root","Usuario root"],
-["Linux","Linux"],
-["Windows","Windows"],
-["MacOS","MacOS"],
-["Terminal","Terminal"],
-["Command","Comando"],
-["Script","Script"],
-["Debug","Depurar"],
-["Bug","Error"],
-["Cloud Security","Seguridad en la nube"],
-["Penetration Testing","Prueba de penetración"],
-["Zero Day","Día cero"],
-["Data Center","Centro de datos"],
-["Monitoring","Monitoreo"],
-["Digital Forensics","Forense digital"],
-["Source Code","Código fuente"],
-["Artificial Intelligence","Inteligencia Artificial"],
-["Machine Learning","Aprendizaje automático"],
-["Big Data","Macrodatos"],
-["Blockchain","Blockchain"],
-["Smart Contract","Contrato inteligente"],
-["Encryption Key","Clave de encriptación"],
-["Hash","Hash"],
-["Token","Token"],
-["Cyber Attack","Ataque cibernético"],
-["Incident Response","Respuesta a incidentes"],
-["Security Policy","Política de seguridad"],
-["Cloud Computing","Computación en la nube"],
-["Two-Factor Authentication","Autenticación de dos factores"],
-["Multi-Factor Authentication","Autenticación multifactor"],
-["Risk Assessment","Evaluación de riesgos"],
-["Cyber Defense","Defensa cibernética"],
-["Digital Identity","Identidad digital"],
-["Security Audit","Auditoría de seguridad"],
-["Intrusion Detection","Detección de intrusos"],
-["Endpoint","Punto final"],
-["Data Protection","Protección de datos"]
-];
+const sections = {
 
-const wordList = document.getElementById("wordList");
+"Tecnología":[
+["Computer","/kom-piú-ter/","Computadora"],
+["Internet","/ín-ter-net/","Internet"],
+["Software","/sóf-uer/","Software"],
+["Hardware","/járd-uer/","Hardware"],
+["Server","/sér-ver/","Servidor"],
+["Network","/né-tuork/","Red"],
+["Database","/déita-beis/","Base de datos"],
+["Cloud","/klaud/","Nube"],
+["System","/sís-tem/","Sistema"],
+["Application","/ap-li-kéi-shon/","Aplicación"],
+["Programming","/pró-gra-ming/","Programación"],
+["Developer","/di-vé-lo-per/","Desarrollador"],
+["Algorithm","/ál-go-ri-dhm/","Algoritmo"],
+["Platform","/plát-form/","Plataforma"],
+["Device","/di-váis/","Dispositivo"],
+["Artificial Intelligence","/ar-ti-fi-shal in-té-li-yens/","Inteligencia Artificial"],
+["Machine Learning","/ma-shín lér-ning/","Aprendizaje automático"],
+["Blockchain","/blók-chein/","Blockchain"],
+["Big Data","/big déi-ta/","Macrodatos"],
+["Smart Contract","/smart kón-tract/","Contrato inteligente"],
+["Source Code","/sors kóud/","Código fuente"],
+["Digital","/dí-yi-tal/","Digital"],
+["Token","/tó-ken/","Token"],
+["Hash","/jash/","Hash"],
+["Cloud Computing","/klaud kom-piú-ting/","Computación en la nube"],
+["Data Center","/déita sén-ter/","Centro de datos"],
+["Monitoring","/mó-ni-to-ring/","Monitoreo"],
+["Encryption Key","/en-kríp-shon ki/","Clave de encriptación"],
+["Automation","/o-to-méi-shon/","Automatización"],
+["Interface","/ín-ter-feis/","Interfaz"]
+],
 
-function displayWords(list){
-    wordList.innerHTML="";
-    list.forEach(word=>{
+"Ciberseguridad":[
+["Cybersecurity","/sái-ber-si-kiú-ri-ti/","Ciberseguridad"],
+["Hacker","/já-ker/","Hacker"],
+["Ethical Hacker","/é-ti-kal já-ker/","Hacker ético"],
+["Malware","/mál-uer/","Malware"],
+["Virus","/vái-rus/","Virus"],
+["Phishing","/fí-shing/","Phishing"],
+["Ransomware","/rán-som-uer/","Ransomware"],
+["Encryption","/en-kríp-shon/","Encriptación"],
+["Password","/pás-uord/","Contraseña"],
+["Authentication","/au-then-ti-kéi-shon/","Autenticación"],
+["Authorization","/o-tho-ri-zéi-shon/","Autorización"],
+["Threat","/zret/","Amenaza"],
+["Attack","/a-ták/","Ataque"],
+["Data Breach","/déita brích/","Fuga de datos"],
+["Spyware","/spái-uer/","Software espía"],
+["Trojan","/tró-yan/","Troyano"],
+["Security","/si-kiú-ri-ti/","Seguridad"],
+["Access","/ák-ses/","Acceso"],
+["Backup","/bák-op/","Copia de seguridad"],
+["Identity","/ai-dén-ti-ti/","Identidad"],
+["Vulnerability","/val-ne-ra-bí-li-ti/","Vulnerabilidad"],
+["Exploit","/eks-plóit/","Exploit"],
+["Patch","/pách/","Parche"],
+["Cybercrime","/sái-ber-kraim/","Ciberdelito"],
+["Dark Web","/dárk ueb/","Web oscura"],
+["Penetration Testing","/pe-ne-tréi-shon tés-ting/","Prueba de penetración"],
+["Zero Day","/zí-ro déi/","Día cero"],
+["Risk Assessment","/risk a-sés-ment/","Evaluación de riesgos"],
+["Security Audit","/si-kiú-ri-ti ó-dit/","Auditoría de seguridad"],
+["Incident Response","/ín-si-dent ri-spóns/","Respuesta a incidentes"]
+],
+
+"Redes y Sistemas":[
+["IP Address","/ai-pí a-drés/","Dirección IP"],
+["Domain","/do-méin/","Dominio"],
+["Hosting","/jós-ting/","Hosting"],
+["Protocol","/pró-to-col/","Protocolo"],
+["HTTP","/ei-chi-ti-ti-pí/","HTTP"],
+["HTTPS","/ei-chi-ti-ti-pí-es/","HTTPS"],
+["VPN","/vi-pí-en/","VPN"],
+["Bandwidth","/bánd-uiz/","Ancho de banda"],
+["Upload","/áp-lod/","Subir"],
+["Download","/dáun-lod/","Descargar"],
+["Administrator","/ad-mí-nis-trei-tor/","Administrador"],
+["Root","/rut/","Usuario root"],
+["Linux","/lí-nuks/","Linux"],
+["Windows","/uín-dous/","Windows"],
+["MacOS","/mák-os/","MacOS"],
+["Terminal","/tér-mi-nal/","Terminal"],
+["Command","/ko-mánd/","Comando"],
+["Script","/skript/","Script"],
+["Debug","/di-bág/","Depurar"],
+["Bug","/bág/","Error"],
+["Endpoint","/énd-point/","Punto final"],
+["Intrusion Detection","/in-trú-shon di-ték-shon/","Detección de intrusos"],
+["Firewall","/fáir-uol/","Cortafuegos"],
+["Data Protection","/déita pro-ték-shon/","Protección de datos"],
+["Cloud Security","/klaud si-kiú-ri-ti/","Seguridad en la nube"],
+["Two-Factor Authentication","/tú fák-tor au-then-ti-kéi-shon/","Autenticación de dos factores"],
+["Multi-Factor Authentication","/múl-ti fák-tor au-then-ti-kéi-shon/","Autenticación multifactor"],
+["Cyber Defense","/sái-ber di-féns/","Defensa cibernética"],
+["Digital Identity","/dí-yi-tal ai-dén-ti-ti/","Identidad digital"],
+["Endpoint Security","/énd-point si-kiú-ri-ti/","Seguridad de punto final"]
+]
+
+};
+
+const container=document.getElementById("content");
+
+for(const section in sections){
+    const title=document.createElement("h2");
+    title.className="section-title";
+    title.innerText=section;
+    container.appendChild(title);
+
+    sections[section].forEach(word=>{
         const div=document.createElement("div");
         div.className="word-card";
         div.innerHTML=`
             <div class="word-text">
                 <strong>${word[0]}</strong><br>
-                <small>${word[1]}</small>
+                <span class="pronunciation">${word[1]}</span><br>
+                <small>${word[2]}</small>
             </div>
             <div class="audio-icon">🎧</div>
         `;
         div.onclick=()=>speak(word[0],div);
-        wordList.appendChild(div);
+        container.appendChild(div);
     });
 }
 
@@ -208,14 +200,6 @@ function speak(word,element){
     document.querySelectorAll(".word-card").forEach(card=>card.classList.remove("active"));
     element.classList.add("active");
 }
-
-function filterWords(){
-    const input=document.querySelector(".search-box").value.toLowerCase();
-    const filtered=words.filter(word=>word[0].toLowerCase().includes(input));
-    displayWords(filtered);
-}
-
-displayWords(words);
 
 </script>
 
