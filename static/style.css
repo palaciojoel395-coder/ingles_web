@@ -1,46 +1,42 @@
-/* BODY: fondo de página */
-body {
+ body {
     margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url("imagenes/image.jpg");  
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
- }
-
-
-header {
-    background-color: rgba(37, 99, 235, 0.6);  
-    color: white;
-    padding: 15px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
-/* NAV */
+header {
+    background: #111;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
 nav a {
     color: white;
-    margin-left: 15px;
+    margin: 0 10px;
     text-decoration: none;
-    font-weight: bold;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    color: #00c6ff;
 }
 
-/* HERO / Sección principal */
-.hero {
+.container {
+    padding: 40px;
+}
+
+footer {
     text-align: center;
-    padding: 80px 20px;
-    background: rgba(59, 130, 246, 0.6); /* Semi-transparente azul, para que se vea la imagen */
+    padding: 20px;
+    background: #111;
     color: white;
 }
 
-/* BOTONES */
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+}
+
 .btn-pronunciation {
     display: inline-block;
     margin-top: 20px;
@@ -49,69 +45,39 @@ nav a:hover {
     color: white;
     text-decoration: none;
     border-radius: 10px;
-    transition: 0.3s;
 }
 
 .btn-pronunciation:hover {
     background: #0072ff;
 }
 
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: white;
-    color: #2563eb;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-/* SECCIONES */
-.section {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-/* TARJETAS */
-.card {
-    background: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente para que la imagen se vea detrás */
-    width: 280px;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    display: inline-block;
-}
-
-/* FOOTER */
-footer {
-    background-color: rgba(30, 58, 138, 0.6); /* Semi-transparente azul */
+/* Pronunciación */
+.pronunciation-wrapper {
+    margin-top: 50px;
+    padding: 40px;
+    border-radius: 20px;
+    background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1c1c1c);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
     color: white;
-    text-align: center;
-    padding: 15px;
 }
 
-/* FORMULARIOS */
-form input, form textarea {
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0;
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
 }
 
-form button {
-    padding: 10px 20px;
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.pronunciation-card {
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.08);
 }
 
-/* CONTENEDOR GENERAL */
-.container {
-    background-color: rgba(255, 255, 255, 0.85); /* Semi-transparente para que se vea un poco la imagen */
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
-} 
+.word {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
