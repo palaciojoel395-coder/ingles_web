@@ -10,9 +10,6 @@ def inicio():
 def pronunciacion():
     return render_template("pronunciacion.html")
 
-@app.route("/interaccion")
-def interaccion():
-    return render_template("interaccion.html")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000, debug=True)
