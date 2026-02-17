@@ -1,10 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Interacción</title>
+    <meta charset="UTF-8">
+    <title>Interacción y Aprendizaje</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .quiz-container{
+            max-width:600px;
+            margin:auto;
+            padding:20px;
+            text-align:center;
+        }
+
+        .option-btn{
+            display:block;
+            width:100%;
+            padding:12px;
+            margin:10px 0;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:16px;
+            transition:0.3s;
+        }
+
+        .correct{
+            background-color:#4CAF50;
+            color:white;
+        }
+
+        .wrong{
+            background-color:#f44336;
+            color:white;
+        }
+
+        .result{
+            margin-top:15px;
+            font-weight:bold;
+            font-size:18px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Sección de Interacción y Aprendizaje</h1>
-    <a href="{{ url_for('inicio') }}">Volver al inicio</a>
+
+<header>
+    <h1>🧠 Quiz Cyber English</h1>
+    <a href="{{ url_for('inicio') }}">
+        <button>⬅ Volver</button>
+    </a>
+</header>
+
+<div class="quiz-container">
+    <h2>Word: <span id="word"></span></h2>
+    <div id="options"></div>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+
+const question = {
+    word: "Hacker",
+    options: ["Programador", "Hacker", "Servidor"],
+    correctIndex: 1
+};
+
+document.getElementById("word").innerText = question.word;
+
+const optionsContainer = document.getElementById("options");
+
+question.options.forEach((option, index) => {
+    const button = document.createElement("button");
+    button.classList.add("option-btn");
+    button.innerText = option;
+
+    button.onclick = () => checkAnswer(index, button);
+
+    optionsContainer.appendChild(button);
+});
+
+function checkAnswer(index, button){
+
+    const buttons = document.querySelectorAll(".option-btn");
+
+    buttons.forEach(btn => btn.disabled = true);
+
+    if(index === question.correctIndex){
+        button.classList.add("correct");
+        document.getElementById("result").innerText = "✅ Correct!";
+    } else {
+        button.classList.add("wrong");
+        buttons[question.correctIndex].classList.add("correct");
+        document.getElementById("result").innerText = "❌ Incorrect!";
+    }
+}
+
+</script>
+
 </body>
 </html>
