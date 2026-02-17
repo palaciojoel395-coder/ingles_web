@@ -10,9 +10,9 @@ def inicio():
 def pronunciacion():
     return render_template("pronunciacion.html")
 
-@app.route("/interaccion y aprendizaje")
+@app.route("/interaccion")
 def interaccion():
-    return render_template("interaccion y aprendizaje.html")
+    return render_template("interaccion.html")
 
 
 if __name__ == "__main__":
