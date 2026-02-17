@@ -191,13 +191,25 @@ for(const section in sections){
     });
 }
 
-function speak(word,element){
-    const utter=new SpeechSynthesisUtterance(word);
-    utter.lang="en-US";
-    utter.rate=0.9;
-    window.speechSynthesis.speak(utter);
+ function speak(word, element){
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = "en-US";
+    utter.rate = 0.7;
 
-    document.querySelectorAll(".word-card").forEach(card=>card.classList.remove("active"));
+    const voices = speechSynthesis.getVoices();
+    const englishVoice = voices.find(voice => 
+        voice.lang === "en-US"
+    );
+
+    if (englishVoice) {
+        utter.voice = englishVoice;
+    }
+
+    window.speechSynthesis.cancel();
+    speechSynthesis.speak(utter);
+
+    document.querySelectorAll(".word-card")
+        .forEach(card => card.classList.remove("active"));
     element.classList.add("active");
 }
 
