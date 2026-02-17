@@ -194,7 +194,7 @@ for(const section in sections){
  function speak(word, element){
     const utter = new SpeechSynthesisUtterance(word);
     utter.lang = "en-US";
-    utter.rate = 0.7;
+    utter.rate = 0.6;
 
     const voices = speechSynthesis.getVoices();
     const englishVoice = voices.find(voice => 
