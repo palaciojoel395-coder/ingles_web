@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cybersecurity Quiz</title>
+</head>
+<body>
+
+<h1>🛡️ Cybersecurity Quiz</h1>
+
+<div id="quiz-container">
+    <h2 id="pregunta">Cargando pregunta...</h2>
+    <div id="opciones"></div>
+</div>
+
+<script>
+let preguntas = [];
+let indiceActual = 0;
+
+fetch("/static/quiz_ciberseguridad.json")
+    .then(response => response.json())
+    .then(data => {
+        preguntas = data.quiz.questions;
+        mostrarPregunta();
+    });
+</script>
+
+<script>
+function mostrarPregunta() {
+
+    if (indiceActual >= preguntas.length) {
+        document.getElementById("quiz-container").innerHTML =
+            "<h2>🎉 Has terminado el quiz</h2>";
+        return;
+    }
+
+    let pregunta = preguntas[indiceActual];
+    document.getElementById("pregunta").innerText = pregunta.question;
+
+    let opcionesHTML = "";
+
+    pregunta.options.forEach(opcion => {
+        opcionesHTML += `
+            <button onclick="verificarRespuesta('${opcion}')">
+                ${opcion}
+            </button><br><br>
+        `;
+    });
+
+    document.getElementById("opciones").innerHTML = opcionesHTML;
+}
+</script>
+
+<script>
+function verificarRespuesta(respuestaUsuario) {
+
+    let respuestaCorrecta = preguntas[indiceActual].answer;
+
+    if (respuestaUsuario === respuestaCorrecta) {
+        alert("✅ Correcto");
+    } else {
+        alert("❌ Incorrecto");
+    }
+
+    indiceActual++;
+    mostrarPregunta();
+}
+</script>
+
+</body>
+</html>
